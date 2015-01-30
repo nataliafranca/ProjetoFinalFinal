@@ -18,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -59,6 +62,12 @@ public class MainActivity extends Activity implements OnClickListener,
     private TextView txtName, txtEmail;
     private LinearLayout llProfileLayout;
 
+    //ListView pro Menu
+    private ListView menuList;
+
+    //Conteúdo da lista
+    String[] menuOptions = new String[] { "Disciplinas","Alimentação", "Transporte", "Biblioteca", "Suporte ao Aluno"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +90,45 @@ public class MainActivity extends Activity implements OnClickListener,
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this).addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN).build();
+
+        menuList = (ListView) findViewById(R.id.menuList);
+
+
+        ArrayAdapter<String> adapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuOptions);
+
+        menuList.setAdapter(adapter);
+
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent i;
+                switch (position) {
+                    case 0:
+                        i = new Intent(getApplicationContext(), Disciplinas.class);
+                        startActivity(i);
+                        break;
+                    case 1:
+                        i = new Intent(getApplicationContext(), Alimentacao.class);
+                        startActivity(i);
+                        break;
+                    case 2:
+                        i = new Intent(getApplicationContext(), Transporte.class);
+                        startActivity(i);
+                        break;
+                    case 3:
+                        i = new Intent(getApplicationContext(), Biblioteca.class);
+                        startActivity(i);
+                        break;
+                    case 4:
+                        i = new Intent(getApplicationContext(), SuporteAluno.class);
+                        startActivity(i);
+                        break;
+                }
+            }
+
+        });
     }
 
     protected void onStart() {

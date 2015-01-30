@@ -8,5 +8,13 @@
     <!-- Button text -->
     <string name="btn_logout_from_google">Logout from Google</string>
     <string name="btn_revoke_access">Revoke Access</string>
+    <string name="title_activity_disciplinas">Disciplinas</string>
+    <string name="title_activity_alimentacao">Alimentacao</string>
+    <string name="title_activity_transporte">Transporte</string>
+    <string name="title_activity_biblioteca">Biblioteca</string>
+    <string name="title_activity_suporte_aluno">SuporteAluno</string>
+    <string name="title_activity_grade">Grade</string>
+    <string name="title_activity_andamento">Andamento</string>
+    <string name="title_activity_qualidade">Qualidade</string>
 
 </resources>
